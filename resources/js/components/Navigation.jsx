@@ -9,6 +9,7 @@ const Navigation = (props) => {
         <Auxil>
             <li className="nav-item"> <Link to={'/login'} className={'nav-link'}>Login</Link> </li>
             <li className="nav-item"> <Link to={'/register'} className={'nav-link'}>Register</Link> </li>
+            
         </Auxil>
         :
         <Auxil>
@@ -51,7 +52,7 @@ const Navigation = (props) => {
                 </div>
                 <div className="collapse navbar-collapse" id="globalNavbar">
                     <form className="form-inline form-navbar my-2 my-lg-0 order-2"
-                          action="https://themes.getbootstrap.com/shop/">
+                          action="#">
                         <input className="form-control" name="s" type="text" placeholder="Search"/>
                     </form>
                     <ul className="navbar-nav mr-auto order-1 bl-primary bl-2">

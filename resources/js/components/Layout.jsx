@@ -36,6 +36,7 @@ import { changeProfileImage, changeProfileName } from '../actions/profile_action
 import BlogList from './BlogList';
 import { Blogs } from './Blogs';
 import SelectTopics from './SelectTopics';
+import ProtectedRoute from './util/ProtectedRoute';
 
 const Layout = (props) => {
     //CHECK FOR LOGGED IN USER WHENEVER APP REFRESH
@@ -49,8 +50,8 @@ const Layout = (props) => {
         }
         
         if (isLoading) {
-            setIsLoading(false)
             props.loadBlogs()
+            setIsLoading(false)
         }
         
             
@@ -66,6 +67,8 @@ const Layout = (props) => {
              addTopicInterest
             } = props;
 
+            const {auth,topics, userTopics, loader, ui,blogs} = state
+
     return (
             // props.state.loader.page_loader_open ? <PageLoader/> :
 
@@ -79,15 +82,21 @@ const Layout = (props) => {
                     {/*<Spinner/>*/}
                     <Switch>
                         <Route exact path={'/'} >
+                        <LandingPage 
+                                blogs={props.state.blogs}
+                                is_authenticated={auth.is_authenticated}
+                            />
+                        </Route>
+                        {/* <Route exact path={'/'} >
                             <LandingPage 
                                 blogs={props.state.blogs}
                                 is_authenticated={props.state.auth.is_authenticated}
                             />
-                        </Route>
+                        </Route> */}
                         <Route exact path={'/select-topics'} >
                             <SelectTopics 
-                                topics={props.state.topics}
-                                userTopics={props.state.userTopics}
+                                topics={topics}
+                                userTopics={userTopics}
                                 addTopicHandler={addTopicInterest}
                             />
                         </Route>
@@ -95,34 +104,34 @@ const Layout = (props) => {
                             <Login
                                 loginHandler={attemptLogin}
                                 is_loading={state.loader.is_open}
-                                isAuthenticated={props.state.auth.is_authenticated}
+                                isAuthenticated={auth.is_authenticated}
                                 authRedirectPath={'/'}
                             />
                         </Route>
                         <Route path={'/register'}>
                             <SignUp
                             signupHandler={attemptSignup}
-                            is_loading = {state.loader.is_open}
+                            is_loading = {loader.is_open}
                             />
                         </Route>
                         
-                        <Route path={'/dashboard'}>
+                        <ProtectedRoute is_authenticated={auth.is_authenticated} path={'/dashboard'}>
                             <Dashboard
-                            user={props.state.auth.authenticated_user}
-                            dashboard_nav_open={props.state.ui.dashboard_nav_open}
+                            user={auth.authenticated_user}
+                            dashboard_nav_open={ui.dashboard_nav_open}
                             addTopicHandler={addTopicInterest}
-                            userTopics={props.state.userTopics}
-                            topics={props.state.topics}
+                            userTopics={userTopics}
+                            topics={topics}
                             changeProfileImage={props.changeProfileImage}
                             handleProfileNameChange={props.changeProfileName}
                             toggleDashboardNav={props.toggleDashboardNav}
                             />
-                        </Route>
-                        <Route to='/blogs' render={() => {
-                            return <Blogs blogs={props.state.blogs} />
+                        </ProtectedRoute>
+                        <ProtectedRoute is_authenticated={auth.is_authenticated} to='/blogs' render={() => {
+                            return <Blogs blogs={blogs} />
                         }}>
                             
-                        </Route>
+                        </ProtectedRoute>
                     </Switch>
                 {/* </Router> */}
 

@@ -11,7 +11,6 @@ const SelectUserTopic = props => {
     const [searchTopics,setSearchTopics] = useState([])
 
     const handleTopicFieldChange = val => {
-        console.log(val,searchTopics)
         if (val.length) {
             
             if (val == '*') {

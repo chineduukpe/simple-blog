@@ -34,10 +34,10 @@ const Login = (props) => {
                 ease: Power2.easeInOut
             })
             .to(loginRef.current, .1,{
-                rotation: 5,   
+                rotation: 1,   
             },"+=.01")
             .to(loginRef.current, .1,{
-                rotation: -5,   
+                rotation: -1,   
             },"+=.01")
             .to(loginRef.current, .1,{
                 rotation: 0,   

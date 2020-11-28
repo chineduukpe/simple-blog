@@ -32,10 +32,10 @@ const SignUp = (props) => {
                 ease: Power2.easeInOut
             })
             .to(slideUpRef.current, .1,{
-                rotation: 5,   
+                rotation: 1,   
             },"+=.01")
             .to(slideUpRef.current, .1,{
-                rotation: -5,   
+                rotation: -1,   
             },"+=.01")
             .to(slideUpRef.current, .1,{
                 rotation: 0,   

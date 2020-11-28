@@ -4,18 +4,22 @@ import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { loadBlogs } from '../actions'
 import BlogItem from './BlogItem'
+import Spinner from './util/Spinner'
 
 const BlogList = props => {
     const [isLoading, setIsLoading] = useState(true)
     console.log(props.blogs)
-    useEffect(() => {
+    useEffect(() => async () => {
         if (isLoading) {
+            await props.loadBlogs()
             setIsLoading(false)
-            props.loadBlogs()
         }
     })
     
     const renderBlogs = () => {
+        if (!props.blogs.length) {
+            return <h6 className="text-muted p-3">Oops! Nothing to show here. Seems you have not selected a topic. Go to <Link to='/dashboard' className='text-danger'>Dashboard</Link> to add topics </h6>
+        }
         return props.blogs.map(function(blog,index){
            return <BlogItem key={index}>
                 <div className="blog-tag">{blog.topic}</div>
@@ -36,7 +40,7 @@ const BlogList = props => {
             <div className="col-sm-12">
             {props.children}
             </div>
-            {renderBlogs()}
+            {isLoading ? <Spinner/> : renderBlogs()}
         </div>
     )
 }

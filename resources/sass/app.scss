@@ -361,6 +361,9 @@ footer{
             left:0;
             padding: .3em 1.2em;
         }
+        img{
+            width: 100%;
+        }
         .blog-desc-wrapper{
             padding: 2em;
             background: $white;
@@ -530,6 +533,7 @@ footer{
         background: $white;
         padding: 0;
 
+
         .blog-tag{
             padding: .3em 2em;
             box-shadow: 0 0 3px rgba($color: #000000, $alpha: .20);
@@ -550,6 +554,7 @@ footer{
         img{
             border-bottom: 3px solid $red;
             border-radius: 0 0 4em 0;
+            width: 100%;
         }
 
         .blog-meta{

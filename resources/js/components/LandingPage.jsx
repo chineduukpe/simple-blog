@@ -104,7 +104,7 @@ const LandingPage = props => {
 
                     </div>
                 </section>
-                {props.is_authenticated && <section className="mt-5">
+                {props.is_authenticated && <section className="mt-5 mb-4">
                     <h4 className="text-danger mt-3 mb-3 bl-2 bl-danger pl-2">Latest for you</h4>
                     <BlogList blogs={props.blogs}></BlogList>
                 </section>}

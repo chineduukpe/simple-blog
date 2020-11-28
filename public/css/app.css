@@ -11238,6 +11238,10 @@ footer * {
   padding: 0.3em 1.2em;
 }
 
+.blog-list .blog-item img {
+  width: 100%;
+}
+
 .blog-list .blog-item .blog-desc-wrapper {
   padding: 2em;
   background: #ffffff;
@@ -11437,6 +11441,7 @@ footer * {
 .blog-detail-wrapper .blog-detail img {
   border-bottom: 3px solid #e3342f;
   border-radius: 0 0 4em 0;
+  width: 100%;
 }
 
 .blog-detail-wrapper .blog-detail .blog-meta {
