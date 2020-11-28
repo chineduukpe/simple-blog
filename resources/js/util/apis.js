@@ -7,6 +7,7 @@ export const pharmacareAPI = axios.create({
 });
 
 pharmacareAPI.interceptors.request.use(req => {
+    console.log(req)
     //APPEND AUTHORIZATION TOKEN TO ALL REQUEST
     const user = localStorage.getItem('pc_user');
     req.headers.common.Authorization = `Bearer ${user ? JSON.parse(user).access_token : "" } `

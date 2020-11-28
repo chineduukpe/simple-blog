@@ -8,15 +8,17 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick'
 import Auxil from './util/Auxil'
 import Loader from './util/PageLoader'
+import BlogList from './BlogList';
 
 
-const LandingPage = () => {
+const LandingPage = props => {
     const sectionRef = useRef(null)
     const xAnimation = useRef(null);
     const buttonAnimation = useRef(null)
     const headerTextEffect = useRef(null)
     const doctor = useRef(null)
     const [hasLoaded, setHasLoaded] = useState(false)
+    console.log(props.blogs)
 
     var sliderSettings = {
         dots: true,
@@ -91,7 +93,7 @@ const LandingPage = () => {
                 <section>
                     <div className="row">
                         <div className="col-md-6 mt-5" ref={sectionRef}>
-                            <h1 ref={headerTextEffect} className={'text-white-50 stencil-font banner-header mt-3'}>Welcome to <span className="text-danger d-block">Bet Blog</span></h1>
+                            <h1 ref={headerTextEffect} className={'text-white-50 stencil-font banner-header mt-3'}>Welcome to <span className="text-danger d-block">Pet Blog</span></h1>
                             <p className="text-white bl-danger bl-2 pl-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi error harum illum in laudantium perspiciatis quo! Alias aliquam culpa ipsam laboriosam nisi numquam, omnis ullam. Dolorem excepturi laudantium molestiae praesentium!</p>
                             <Link ref={buttonAnimation} to={'/login'} className={'btn btn-danger btn-lg ml-3 mt-3 '}> Sign in here <i className="fa fa-arrow-right"></i></Link>
                         </div>
@@ -100,6 +102,10 @@ const LandingPage = () => {
                         </div>
 
                     </div>
+                </section>
+                <section className="mt-5">
+                    <h4 className="text-danger mt-3 mb-3 bl-2 bl-danger pl-2">Latest for you</h4>
+                    <BlogList blogs={props.blogs}></BlogList>
                 </section>
             </div>
                 

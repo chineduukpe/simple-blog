@@ -28,12 +28,9 @@ export const attemptLogin = data => {
         dispatch(showLoader())
         try {
             const response = await pharmacareAPI.post('login',data);
-            console.log(response.data)
             const {user, access_token } = response.data;
             dispatch(showNotifications(response.data.message,'success'));
-            localStorage.setItem('pc_user',JSON.stringify({user: user, access_token: access_token}));
-            dispatch(authenticationSuccess({user, access_token}))
-            console.log('topics', user.user.topics)
+            dispatch(setAuthenticatedUser({user, access_token}))
             dispatch(userTopicsLoaded(user.user.topics))
         }catch (e) {
             console.log(e)
@@ -45,7 +42,8 @@ export const attemptLogin = data => {
     }
 }
 
-export const authenticationSuccess = user => {
+export const setAuthenticatedUser = user => {
+    localStorage.setItem('pc_user',JSON.stringify({user: user.user, access_token: user.access_token}));
     return {
         type: AUTHENTICATION_SUCCESS,
         user,
@@ -58,13 +56,11 @@ export const attemptSignout = () => {
         dispatch(showLoader())
         try {
         const response = await pharmacareAPI.post('/logout');
-        console.log(response)
         dispatch(showNotifications(response.data.message,'success'))
             localStorage.clear()
             dispatch(signoutSuccess())
 
         }catch (e) {
-            console.log(e.response)
             dispatch(showNotifications(e.response.data.errors))
         }
         finally {

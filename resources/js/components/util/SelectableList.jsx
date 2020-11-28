@@ -14,7 +14,7 @@ const SelectableList = props => {
              key={index}>{selectable[field]}</SelectableListItem>})
     }
     return (
-        <div>
+        <div className='shadow'>
             {
                 list()
                 }

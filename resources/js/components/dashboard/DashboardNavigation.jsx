@@ -1,16 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import ProfileImageSection from '../util/ProfileImageSection';
 
 
 const DashboardNavigation = props =>{
     return (
-        <div className='dashboard-navigation'>
-            <div className="text-center avatar-wrapper">
-                <img src="http://localhost:8000/assets/img/profile/default.jpg" alt="avatar"/>
-                <h4 className='text-center'>Chinedu Ukpe</h4>
-                <span>Admin</span>
-            </div>
-            <button className="close">x</button>
+        <div className={`dashboard-navigation  ${props.is_open ? 'show' : ''}`}>
+            <ProfileImageSection 
+                user={props.user}
+            ></ProfileImageSection>
+            <button className="close" onClick={() => props.toggleDashboardNav()}>x</button>
             <ul>
                 <h6 className="text-primary mt-3">Dashboard</h6>
                 <li className='active'> <Link to='/dashboard/profile'><i className="fa fa-user"></i> Profile</Link></li>

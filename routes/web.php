@@ -6,6 +6,8 @@ use \App\Models\Blog;
 use \App\Models\User;
 use \App\Models\TopicSubscription;
 
+use App\Http\Controllers\APIControllers\TopicInterestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +23,4 @@ Route::get('/', function () {
     return view('welcome-react');
 });
 
-Route::get('/test', function () {
-    return ['user' => User::find(4),
-            'topics' => User::find(4)->topics()
-            ];
-
-});
+Route::get('/test', [TopicInterestController::class,'create']);

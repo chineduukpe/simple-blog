@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -37,8 +37,7 @@ class AuthController extends Controller
         $user = auth()->attempt($validatedData);
 
         if (!$user) {
-            return response(
-                ['errors' => ['invalid_credentials' => ['Invalid login credentials']]],401);
+            return response(['errors' => ['invalid_credentials' => ['Invalid login credentials']]],401);
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;

@@ -39,7 +39,8 @@ const Navigation = (props) => {
         </Auxil>
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className={`navbar navbar-expand-lg navbar-light`} >
+            
             <div className="container"><Link className="navbar-brand" to="/"><span className="text-danger">Pharma</span>care</Link>
                 <div className="d-flex ml-auto">
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#globalNavbar"
@@ -95,7 +96,7 @@ const Navigation = (props) => {
                         <li className="nav-item"><a className="nav-link"
                                                     href="https://themes.getbootstrap.com/official-themes">Why Our
                             Themes?</a></li>
-                        <li className="nav-item"> <Link to={'/users'} className={'nav-link'}>Users</Link> </li>
+                        <li className="nav-item"> <Link to={'/blogs'} className={'nav-link'}>Blog</Link> </li>
                     </ul>
                     <ul className="navbar-nav d-none d-lg-flex ml-2 order-3">
                         { navlinks }

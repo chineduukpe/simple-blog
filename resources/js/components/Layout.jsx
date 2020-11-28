@@ -1,5 +1,5 @@
 // IMPORTED LIBRARIES
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -20,32 +20,39 @@ import {
     closeNotifications,
     attemptSignup,
     attemptLogin,
-    authenticationSuccess,
+    setAuthenticatedUser,
     hidePageLoader,
     attemptSignout,
     addTopicInterest,
-    addTopicInterestSuccess,
-    addTopicInterestFail,
+    toggleDashboardNav,
+    loadBlogs,
 } from '../actions'
 
 import SignUp from "./auth/SignUp";
 import Spinner from "./util/Spinner";
 import Dashboard from './dashboard/Dashboard';
 import Margin from './util/Margin';
+import { changeProfileImage, changeProfileName } from '../actions/profile_actions';
+import BlogList from './BlogList';
+import { Blogs } from './Blogs';
 
 const Layout = (props) => {
-
     //CHECK FOR LOGGED IN USER WHENEVER APP REFRESH
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
+        // Push authenticated user from local storage to 
+        // redux state when app loads
         let user = localStorage.getItem('pc_user');
         if (user && !props.state.auth.is_authenticated){
-            props.authenticationSuccess(JSON.parse(user));
+            props.setAuthenticatedUser(JSON.parse(user));
         }
-        if (props.state.loader.page_loader_open)
-            setTimeout(() => {
-                props.hidePageLoader()
-            }, 3000)
-
+        
+        if (isLoading) {
+            setIsLoading(false)
+            props.loadBlogs()
+        }
+        
+            
     })
 
 
@@ -64,7 +71,10 @@ const Layout = (props) => {
                     {/*<Spinner/>*/}
                     <Switch>
                         <Route exact path={'/'} >
-                            <LandingPage/>
+                            <LandingPage 
+                                blogs={props.state.blogs}
+                                is_authenticated={props.state.auth.is_authenticated}
+                            />
                         </Route>
                         <Route path={'/login'}>
                             <Login
@@ -80,11 +90,21 @@ const Layout = (props) => {
                             is_loading = {state.loader.is_open}
                             />
                         </Route>
+                        
                         <Route path={'/dashboard'}>
                             <Dashboard
                             user={props.state.auth.authenticated_user}
+                            dashboard_nav_open={props.state.ui.dashboard_nav_open}
                             addTopicInterest={addTopicInterest}
+                            userTopics={props.state.userTopics}
+                            topics={props.state.topics}
+                            changeProfileImage={props.changeProfileImage}
+                            handleProfileNameChange={props.changeProfileName}
+                            toggleDashboardNav={props.toggleDashboardNav}
                             />
+                        </Route>
+                        <Route to='/blogs' component={Blogs}>
+                            
                         </Route>
                     </Switch>
                 </Router>
@@ -109,10 +129,15 @@ const matchDispatchToProps = (dispatch) => {
         closeNotifications,
         attemptSignup,
         attemptLogin,
-        authenticationSuccess,
+        setAuthenticatedUser,
         hidePageLoader,
         attemptSignout,
         addTopicInterest,
+        changeProfileImage,
+        changeProfileName,
+        toggleDashboardNav,
+        loadBlogs
+        
     },dispatch)
 }
 

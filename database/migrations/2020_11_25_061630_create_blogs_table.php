@@ -19,6 +19,7 @@ class CreateBlogsTable extends Migration
             $table->text('body');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('topic_id');
+            $table->text('blog_image_url')->default('http://localhost:8000/assets/img/bg/bg1.jpg');
             // $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -67,4 +67,9 @@ class User extends Authenticatable
         return TopicSubscription::where('user_id',$this->id)->where('topic_id',$topic_id)->first() ?? false;
     }
 
+    public function removeTopicInterest($topic_id){
+        $topic = $topic_subscription = TopicSubscription::where('user_id',$this->id)->where('topic_id',$topic_id)->first();
+        return $topic ? $topic->delete() : false;
+    }
+
 }

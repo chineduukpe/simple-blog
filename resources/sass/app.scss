@@ -347,6 +347,34 @@ footer{
     fill: #FFFFFF;
 }
 
+.blog-list{
+    .blog-item{
+        .blog-tag{
+            background: red;
+            color: $white;
+            position: absolute;
+            top: 0;
+            left:0;
+            padding: .3em 1.2em;
+        }
+        .blog-desc-wrapper{
+            padding: 2em;
+            background: $white;
+            .blog-title{
+                color: rgba($red,.7);
+                font-weight: 700;
+            }
+            .blog-exerpt{
+                line-height: 1.5em;
+                color: $grey;
+                font-size: .9em;
+            }
+            &:hover{
+                top: calc(-2em)
+            }
+        }
+    }
+}
 
 @media screen and (max-width: $mobile) {
     html{
@@ -357,7 +385,41 @@ footer{
     }
 }
 
+.avatar-wrapper{
+    img{
+        border-radius: 2em;
+        border: 1px solid $light-grey;
+        width: 4em;
+        height: 4em;
 
+        &after{
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: $red;
+            border-radius: 50%;
+
+        }
+    }
+
+    h4,span{
+        text-align: center;
+    }
+    h4{
+        font-size: 1.3em;
+        color: $grey;
+        margin-top: .5em;
+        margin-bottom: 0;
+    }
+    span{
+        color: $light-grey;
+        font-size: 1em;
+        margin-top: .3em;
+        line-height: 1em;
+    }
+}
 // Mobile First
 .dashboard-container{
     background: $extra-light-grey;
@@ -374,44 +436,11 @@ footer{
         padding-top: 15%;
         position: fixed;
         top: 100;
-        left: 0;
+        left: -1000px;
         background: #fff;
         box-shadow: 0 0 10px rgba(100,100,100,.5);
-        .avatar-wrapper{
-            img{
-                border-radius: 2em;
-                border: 1px solid $light-grey;
-                width: 4em;
-                height: 4em;
-
-                &after{
-                    content: '';
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                    background: $red;
-                    border-radius: 50%;
-
-                }
-            }
-
-            h4,span{
-                text-align: center;
-            }
-            h4{
-                font-size: 1.3em;
-                color: $grey;
-                margin-top: .5em;
-                margin-bottom: 0;
-            }
-            span{
-                color: $light-grey;
-                font-size: .7em;
-                margin-top: .3em;
-                line-height: 1em;
-            }
-        }
+        transition: left 500ms linear;
+        
         
         .close{
             position: absolute;
@@ -440,6 +469,10 @@ footer{
                 }
             }
         }
+    }
+
+    .dashboard-navigation.show{
+        left: 0;
     }
 
     .dashboard-content{
@@ -487,6 +520,69 @@ footer{
 
 }
 
+.blog-detail-wrapper{
+    padding: 0;
+    .blog-detail{
+        background: $white;
+        padding: 0;
+
+        .blog-tag{
+            padding: .3em 2em;
+            box-shadow: 0 0 3px rgba($color: #000000, $alpha: .20);
+            font-size: .8em;
+            text-align: center;
+            background: rgba($color: $red, $alpha: .7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: $white;
+        }
+
+        .blog-text{
+            padding: 2em;
+            border-left: .1em solid rgba($red,.5)
+        }
+
+        img{
+            border-bottom: 3px solid $red;
+            border-radius: 0 0 4em 0;
+        }
+
+        .blog-meta{
+            background: rgba($extra-light-grey, .4);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 1em;
+            flex-wrap: wrap;
+            span{
+                width: 50%;
+            }
+            .post-maker{
+                img{
+                    width: 2em;
+                    height: 2em;
+                    border-radius: 50%;
+                    margin-right: .3em;
+                }
+                small{
+                    color: $red;
+                    font-weight: 700;
+                }
+            }
+            .social-share{
+                button{
+                    margin-left: .2em;
+                    border-radius: .5em !important;
+                }
+            }
+        }
+    }
+
+
+    
+}
+
 
 .tags{
     font-size: .83em;
@@ -509,13 +605,27 @@ input.form-control{
     background: $primary !important;
 }
 
+.mobile-menu-toggle{
+    position: fixed;
+    top: 10vh;
+    padding: .3em .9em;
+    background: rgba($color: $red, $alpha: .6);
+    right: 0;
+    
+}
+
 // Big screen
 @media screen and (min-width: $tablet-min-breakpoint){
+    .mobile-menu-toggle{
+        display: none;
+    }
     .dashboard-container{
         .dashboard-navigation{
             display: block;
-            width: 15%;
+            width: 20%;
             padding-top: 2em;
+            left: 0;
+            z-index: 0;
             .close{
                 color: $white;
             }
@@ -533,6 +643,17 @@ input.form-control{
                     }
                     transition: background 300ms linear;
                     transform-origin: left;
+                    a,i{
+                        color: $light-grey;
+                        font-size: 1.1em;
+                        margin-bottom: .33em;
+                    }
+                    a{
+                        margin-left: 1em;
+                        i{
+                            margin-right: 1em;
+                        }
+                    }
                 }
                 
             li.active{
@@ -543,9 +664,18 @@ input.form-control{
         }
 
         .dashboard-content{
-            width: 80%;
+            width: 75%;
             position: absolute;
             right: 2em;
+        }
+    }
+    .blog-detail-wrapper{
+        .blog-detail{
+            .blog-meta{
+                span{
+                    width: auto;
+                }
+            }
         }
     }
 }
