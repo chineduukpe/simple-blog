@@ -13,7 +13,7 @@ const CardHeader = props => {
     }
 
     return (
-        <div style={style} className='card-header'>
+        <div style={style} className={`card-header ${props.className ? props.className : ""}`}>
             {props.children}
         </div>
     )

@@ -18,7 +18,7 @@ const LandingPage = props => {
     const headerTextEffect = useRef(null)
     const doctor = useRef(null)
     const [hasLoaded, setHasLoaded] = useState(false)
-    console.log(props.blogs)
+    
 
     var sliderSettings = {
         dots: true,
@@ -95,7 +95,7 @@ const LandingPage = props => {
                         <div className="col-md-6 mt-5" ref={sectionRef}>
                             <h1 ref={headerTextEffect} className={'text-white-50 stencil-font banner-header mt-3'}>Welcome to <span className="text-danger d-block">Pet Blog</span></h1>
                             <p className="text-white bl-danger bl-2 pl-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi error harum illum in laudantium perspiciatis quo! Alias aliquam culpa ipsam laboriosam nisi numquam, omnis ullam. Dolorem excepturi laudantium molestiae praesentium!</p>
-                            <Link ref={buttonAnimation} to={'/login'} className={'btn btn-danger btn-lg ml-3 mt-3 '}> Sign in here <i className="fa fa-arrow-right"></i></Link>
+                            {!props.is_authenticated && <Link ref={buttonAnimation} to={'/login'} className={'btn btn-danger btn-lg ml-3 mt-3 '}> Sign in to see interests <i className="fa fa-arrow-right"></i></Link>}
                         </div>
                         <div className="col-md-6">
                             <img ref={doctor} className={'img img-fluid banner-img'} src="http://localhost:8000/assets/img/doc1.png" alt="Doctor Image"/>
@@ -103,10 +103,10 @@ const LandingPage = props => {
 
                     </div>
                 </section>
-                <section className="mt-5">
+                {props.is_authenticated && <section className="mt-5">
                     <h4 className="text-danger mt-3 mb-3 bl-2 bl-danger pl-2">Latest for you</h4>
                     <BlogList blogs={props.blogs}></BlogList>
-                </section>
+                </section>}
             </div>
                 
         </Auxil>

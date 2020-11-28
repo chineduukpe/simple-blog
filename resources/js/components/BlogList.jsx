@@ -1,8 +1,19 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { loadBlogs } from '../actions'
 import BlogItem from './BlogItem'
 
 const BlogList = props => {
+    const [isLoading, setIsLoading] = useState(true)
+    console.log(props.blogs)
+    useEffect(() => {
+        if (isLoading) {
+            setIsLoading(false)
+            props.loadBlogs()
+        }
+    })
     
     const renderBlogs = () => {
         return props.blogs.map(function(blog,index){
@@ -29,5 +40,9 @@ const BlogList = props => {
         </div>
     )
 }
-
-export default BlogList;
+const matchDispatchToProps = dispatch => {
+    return bindActionCreators({
+        loadBlogs      
+    },dispatch)
+} 
+export default connect(null,matchDispatchToProps)(BlogList);

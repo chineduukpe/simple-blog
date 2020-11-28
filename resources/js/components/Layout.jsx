@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, withRouter} from 'react-router-dom'
 
 
 //IMPORTED COMPONENTS
@@ -62,7 +62,7 @@ const Layout = (props) => {
             // props.state.loader.page_loader_open ? <PageLoader/> :
 
             <div className="container-fluid p-0">
-                <Router>
+                {/* <Router> */}
                 <Navigation
                     user={props.state.auth.authenticated_user.user}
                     signoutAction={props.attemptSignout}
@@ -103,11 +103,13 @@ const Layout = (props) => {
                             toggleDashboardNav={props.toggleDashboardNav}
                             />
                         </Route>
-                        <Route to='/blogs' component={Blogs}>
+                        <Route to='/blogs' render={() => {
+                            return <Blogs blogs={props.state.blogs} />
+                        }}>
                             
                         </Route>
                     </Switch>
-                </Router>
+                {/* </Router> */}
 
                 {/* <Footer /> */}
 
@@ -123,11 +125,11 @@ const matchStateToProps = (state) => {
     return {state};
 }
 
-const matchDispatchToProps = (dispatch) => {
+const matchDispatchToProps = (dispatch,ownProps) => {
     return bindActionCreators({
         showNotifications,
         closeNotifications,
-        attemptSignup,
+        attemptSignup: data => dispatch(data, ownProps),
         attemptLogin,
         setAuthenticatedUser,
         hidePageLoader,
@@ -141,5 +143,5 @@ const matchDispatchToProps = (dispatch) => {
     },dispatch)
 }
 
-export default connect(matchStateToProps,matchDispatchToProps)(Layout);
+export default withRouter(connect(matchStateToProps,matchDispatchToProps)(Layout));
 

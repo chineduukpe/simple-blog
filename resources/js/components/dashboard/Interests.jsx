@@ -1,15 +1,22 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useRef, useState} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { userTopicsLoaded, loadTopics, removeTopicInterest } from '../../actions'
 import { pharmacareAPI } from '../../util/apis'
 import Auxil from '../util/Auxil'
 import Spinner from '../util/Spinner'
+import {TweenMax, TimelineMax} from 'gsap'
 
 const Interests = props => {
     const [isLoading,setIsLoading] = useState(true);
-
+    const tag = useRef(null)
+    
     useEffect(() => {
+        const tl = new TimelineMax();
+        tl.from(tag.current,1,{
+            left: 50,
+            duration: 1,
+        });
         if(isLoading){
             loadUserInterests();
         }
@@ -28,7 +35,7 @@ const Interests = props => {
 
     const renderComponent = () => {
         return props.topics.map(function(topic,index){
-            return <li className='tags' key={index}>{topic.topic} <button className="close" onClick={() => props.removeTopicInterest(topic.id)}>x</button></li>
+            return <li ref={tag} className='tags shadow' key={index}>{topic.topic} <button className="close" onClick={() => props.removeTopicInterest(topic.id)}>x</button></li>
         })
     }
 

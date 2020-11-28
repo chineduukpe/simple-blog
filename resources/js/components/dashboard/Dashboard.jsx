@@ -35,7 +35,7 @@ const Dashboard = props => {
                 is_open={props.dashboard_nav_open}
             />
             <DashboardContent >
-                <CardHeader>
+                <CardHeader className='bl-2 bl-primary text-primary'>
                     Profile
                 </CardHeader>
 
@@ -57,7 +57,7 @@ const Dashboard = props => {
                           />
                     </div>
                     <div className="col-md-4">
-                        <CardHeader style={{display:'block'}}>Pet interest</CardHeader>
+                        <CardHeader style={{display:'block'}} className="shadow text-primary bl-2 bl-primary">Pet interest</CardHeader>
                         <Interests
                             topics={props.userTopics}
                         />
@@ -66,6 +66,7 @@ const Dashboard = props => {
                                 <FormControl
                                     placeholder={'Type to search pet interest'}
                                     handler={handleTopicFieldChange}
+                                    classes={'shadow'}
                                  />
                                 <SelectableList 
                                     items={searchTopics}

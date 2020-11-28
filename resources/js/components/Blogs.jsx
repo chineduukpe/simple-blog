@@ -8,7 +8,6 @@ import BlogList from './BlogList'
 
 
 export const Blogs = props => {
-    console.log("Hello Blogs", props)
     const [hasLoaded,setHasLoaded] = useState(false);
     useEffect(() => {
         if (!hasLoaded) {
@@ -22,7 +21,8 @@ export const Blogs = props => {
             return <BlogDetail></BlogDetail>
             }}>
             </Route>
-            <Route exact path={'/blogs'} component={() => {
+            <Route exact path={'/blogs'} render={() => {
+
                 return <BlogList blogs={props.blogs} >
                     <h5 className='text-primary bl-2 pl-2 bl-primary'>Blogs based on your interest</h5>
                  </BlogList>

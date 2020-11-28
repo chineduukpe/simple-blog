@@ -12,6 +12,7 @@ const Navigation = (props) => {
         </Auxil>
         :
         <Auxil>
+            <li className="nav-item"> <Link to={'/blogs'} className={'nav-link'}>Blog List</Link> </li>
             <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">{props.user.name} </a>
@@ -26,6 +27,7 @@ const Navigation = (props) => {
                                 className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-603">
                                 <Link to={'/profile'} > <i className="fa fa-user"></i> Profile </Link>
                             </li>
+                            
                             <li className="dropdown-divider"></li>
                             <li id="menu-item-1537"
                                 className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1537">
@@ -41,7 +43,7 @@ const Navigation = (props) => {
     return (
         <nav className={`navbar navbar-expand-lg navbar-light`} >
             
-            <div className="container"><Link className="navbar-brand" to="/"><span className="text-danger">Pharma</span>care</Link>
+            <div className="container"><Link className="navbar-brand" to="/"><span className="text-danger">Pet</span>Blog</Link>
                 <div className="d-flex ml-auto">
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#globalNavbar"
                             aria-controls="globalNavbar" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -53,7 +55,7 @@ const Navigation = (props) => {
                         <input className="form-control" name="s" type="text" placeholder="Search"/>
                     </form>
                     <ul className="navbar-nav mr-auto order-1 bl-primary bl-2">
-                        <li className="nav-item dropdown">
+                        {/* <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" data-toggle="dropdown"
                                                              aria-haspopup="true" aria-expanded="false">Categories</a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -92,11 +94,11 @@ const Navigation = (props) => {
                                     </ul>
                                 </div>
                             </div>
-                        </li>
-                        <li className="nav-item"><a className="nav-link"
+                        </li> */}
+                        {/* <li className="nav-item"><a className="nav-link"
                                                     href="https://themes.getbootstrap.com/official-themes">Why Our
-                            Themes?</a></li>
-                        <li className="nav-item"> <Link to={'/blogs'} className={'nav-link'}>Blog</Link> </li>
+                            Themes?</a></li> */}
+                        
                     </ul>
                     <ul className="navbar-nav d-none d-lg-flex ml-2 order-3">
                         { navlinks }

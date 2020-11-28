@@ -11,12 +11,16 @@
 @import '~bootstrap/scss/bootstrap';
 
 *{
-    font-family: Roboto;
+    font-family: Nunito;
+}
+
+.nav-brand{
+    font-family: cursive;
 }
 
 body{
   min-height: 100vh;
-    background: url("http://localhost:8000/assets/img/bg/bg1.jpg") no-repeat;
+    background: url("http://localhost:8000/assets/img/bg/bg3.jpg") no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -609,7 +613,7 @@ input.form-control{
     position: fixed;
     top: 10vh;
     padding: .3em .9em;
-    background: rgba($color: $red, $alpha: .6);
+    background: rgba($color: $green, $alpha: .6);
     right: 0;
     
 }

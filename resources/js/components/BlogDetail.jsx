@@ -16,11 +16,11 @@ const BlogDetail = props => {
                     <img className="img-fluid" src={blog.blog_image_url} alt="blogimga"/>
                     <div className="blog-meta">
                         <span className="post-maker">
-                            <img src={blog.blog_image_url} alt=""/>
-                            <small>Chinedu Ukpe</small>
+                            <img src={blog.user.profile_image_url} alt=""/>
+                            <small>{blog.user.name}</small>
                         </span>
                         <span>
-                            <small className="text-muted"><i className="fa fa-clock-o"></i> {blog.created_at}</small>
+                            <small className="text-muted"><i className="fa fa-clock-o"></i> {blog.created_at.substr(0,10)}</small>
                         </span>
                         <span className="social-share">
                             <small className="text-muted">Share: </small>

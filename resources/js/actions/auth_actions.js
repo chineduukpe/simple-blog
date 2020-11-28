@@ -6,12 +6,14 @@ import {objectToSingleArray} from "../util/helpers";
 import {AUTHENTICATION_SUCCESS, SIGNOUT_SUCCESS} from "./action_types";
 import { userTopicsLoaded } from './topic_interest_actions';
 
-export const attemptSignup = data => {
+export const attemptSignup = (data, ownProps) => {
     return async dispatch => {
         dispatch(showLoader());
         try {
             const response = await pharmacareAPI.post('/register',data);
             dispatch(showNotifications(response.data.message,'success'))
+            ownProps.history.push('/select-topics');
+
         }catch (e) {
             dispatch(showNotifications(objectToSingleArray(e.response.data.errors),'error'))
         }

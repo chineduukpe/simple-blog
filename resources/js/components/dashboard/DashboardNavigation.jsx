@@ -11,12 +11,12 @@ const DashboardNavigation = props =>{
             ></ProfileImageSection>
             <button className="close" onClick={() => props.toggleDashboardNav()}>x</button>
             <ul>
-                <h6 className="text-primary mt-3">Dashboard</h6>
-                <li className='active'> <Link to='/dashboard/profile'><i className="fa fa-user"></i> Profile</Link></li>
-                <li> <Link to='/dashboard/profile'><i className="fa fa-cog"></i> Setting</Link></li>
+                <h6 className="text-primary mt-3"><i className="fa fa-dashboard"></i> Dashboard</h6>
+                <li className='active'> <Link to='/dashboard/profile'><i className="fa fa-user1"></i> Profile</Link></li>
+                <li> <Link to='/dashboard/profile'><i className="fa fa-cog1"></i> Setting</Link></li>
                 <li> <Link to='/dashboard/changepassword'><i className="fa fa-lock"></i> Change Password</Link></li>
                 <hr/>
-                <h6 className="text-primary">Admin</h6>
+                <h6 className="text-primary"><i className="fa fa-chart-bar"></i> Admin</h6>
                 <li><Link to='/dashboard/posts'>Users</Link></li>
             </ul>
             <div className="dashboard-nav-footer">
