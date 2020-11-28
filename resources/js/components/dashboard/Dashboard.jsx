@@ -9,10 +9,12 @@ import DashboardContent from './DashboardContent'
 import DashboardNavigation from './DashboardNavigation'
 import Interests from './Interests'
 import ProfileForm from './ProfileForm'
+import SelectUserTopic from './SelectUserTopics'
 
 const Dashboard = props => {
+    console.log("DASHBOARD PROPSS",props)
     const [searchTopics,setSearchTopics] = useState([])
-
+    
     const handleTopicFieldChange = val => {
         console.log(val,searchTopics)
         if (val.length) {
@@ -26,6 +28,7 @@ const Dashboard = props => {
         }
         return setSearchTopics([]);
     }
+
     return (
         <div className={'dashboard-container'}>
             <button className="mobile-menu-toggle btn btn-sm shadow" onClick={() => props.toggleDashboardNav()}>menu </button>
@@ -58,24 +61,12 @@ const Dashboard = props => {
                     </div>
                     <div className="col-md-4">
                         <CardHeader style={{display:'block'}} className="shadow text-primary bl-2 bl-primary">Pet interest</CardHeader>
-                        <Interests
-                            topics={props.userTopics}
+                        
+                        <SelectUserTopic
+                            topics={props.topics}
+                            userTopics={props.userTopics}
+                            addTopicHandler={props.addTopicHandler}
                         />
-                        <form onSubmit={() => {}}>
-                            <FormGroup>
-                                <FormControl
-                                    placeholder={'Type to search pet interest'}
-                                    handler={handleTopicFieldChange}
-                                    classes={'shadow'}
-                                 />
-                                <SelectableList 
-                                    items={searchTopics}
-                                    field={'topic'}
-                                    clickHandler={props.addTopicInterest}
-                                />
-                                <p style={{color:'rgba(100,100,100,.6)',textAlign: 'center',fontSize: '.8em', marginTop: '.5em'}}>Enter * for all topics</p>
-                            </FormGroup>
-                        </form>
                     </div>
                 </div>
             </DashboardContent>

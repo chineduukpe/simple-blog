@@ -20,10 +20,11 @@ class AuthController extends Controller
         $validatedData['password'] = \bcrypt($validatedData['password']);
 
         $user = User::create($validatedData);
-        // $accessToken = $user->createToken('authToken')->accessToken;
+        $accessToken = $user->createToken('authToken')->accessToken;
 
         return response([
-            'message' => ['Registration was successful. Please verify your email to continue'],
+            'message' => ['Registration was successful.','Select topic of interest to continue'],
+            'user' => ['user' => $user,'access_token' => $accessToken]
         ],200);
     }
 

@@ -84058,26 +84058,27 @@ var attemptSignup = function attemptSignup(data, ownProps) {
             case 4:
               response = _context.sent;
               dispatch(Object(___WEBPACK_IMPORTED_MODULE_3__["showNotifications"])(response.data.message, 'success'));
+              dispatch(setAuthenticatedUser(response.data.user));
               ownProps.history.push('/select-topics');
-              _context.next = 12;
+              _context.next = 13;
               break;
 
-            case 9:
-              _context.prev = 9;
+            case 10:
+              _context.prev = 10;
               _context.t0 = _context["catch"](1);
               dispatch(Object(___WEBPACK_IMPORTED_MODULE_3__["showNotifications"])(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["objectToSingleArray"])(_context.t0.response.data.errors), 'error'));
 
-            case 12:
-              _context.prev = 12;
+            case 13:
+              _context.prev = 13;
               dispatch(Object(___WEBPACK_IMPORTED_MODULE_3__["hideLoader"])());
-              return _context.finish(12);
+              return _context.finish(13);
 
-            case 15:
+            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 9, 12, 15]]);
+      }, _callee, null, [[1, 10, 13, 16]]);
     }));
 
     return function (_x) {
@@ -84146,7 +84147,7 @@ var setAuthenticatedUser = function setAuthenticatedUser(user) {
     is_authenticated: true
   };
 };
-var attemptSignout = function attemptSignout() {
+var attemptSignout = function attemptSignout(ownProps) {
   return /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(dispatch) {
       var response;
@@ -84161,28 +84162,29 @@ var attemptSignout = function attemptSignout() {
 
             case 4:
               response = _context3.sent;
+              ownProps.history.push('/');
               dispatch(Object(___WEBPACK_IMPORTED_MODULE_3__["showNotifications"])(response.data.message, 'success'));
               localStorage.clear();
               dispatch(signoutSuccess());
-              _context3.next = 13;
+              _context3.next = 14;
               break;
 
-            case 10:
-              _context3.prev = 10;
+            case 11:
+              _context3.prev = 11;
               _context3.t0 = _context3["catch"](1);
               dispatch(Object(___WEBPACK_IMPORTED_MODULE_3__["showNotifications"])(_context3.t0.response.data.errors));
 
-            case 13:
-              _context3.prev = 13;
+            case 14:
+              _context3.prev = 14;
               dispatch(Object(___WEBPACK_IMPORTED_MODULE_3__["hideLoader"])());
-              return _context3.finish(13);
+              return _context3.finish(14);
 
-            case 16:
+            case 17:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[1, 10, 13, 16]]);
+      }, _callee3, null, [[1, 11, 14, 17]]);
     }));
 
     return function (_x3) {
@@ -85309,7 +85311,9 @@ var LandingPage = function LandingPage(props) {
       className: "text-danger d-block"
     }, "Pet Blog")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "text-white bl-danger bl-2 pl-3"
-    }, " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi error harum illum in laudantium perspiciatis quo! Alias aliquam culpa ipsam laboriosam nisi numquam, omnis ullam. Dolorem excepturi laudantium molestiae praesentium!"), !props.is_authenticated && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    }, "Welcome to pet blog! It's great to have you here mate. Signup and get update on how to train your lovly pet. Already have an account? No hussle mate! Click the button below to ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+      className: " text-danger"
+    }, " Cheers!"), " "), !props.is_authenticated && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       ref: buttonAnimation,
       to: '/login',
       className: 'btn btn-danger btn-lg ml-3 mt-3 '
@@ -85365,6 +85369,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_profile_actions__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../actions/profile_actions */ "./resources/js/actions/profile_actions.js");
 /* harmony import */ var _BlogList__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./BlogList */ "./resources/js/components/BlogList.jsx");
 /* harmony import */ var _Blogs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Blogs */ "./resources/js/components/Blogs.jsx");
+/* harmony import */ var _SelectTopics__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./SelectTopics */ "./resources/js/components/SelectTopics.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -85390,6 +85395,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  //IMPORTED ACTIONS
+
 
 
 
@@ -85444,6 +85450,13 @@ var Layout = function Layout(props) {
       blogs: props.state.blogs,
       is_authenticated: props.state.auth.is_authenticated
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+      exact: true,
+      path: '/select-topics'
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SelectTopics__WEBPACK_IMPORTED_MODULE_19__["default"], {
+      topics: props.state.topics,
+      userTopics: props.state.userTopics,
+      addTopicHandler: addTopicInterest
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
       path: '/login'
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth_Login__WEBPACK_IMPORTED_MODULE_6__["default"], {
       loginHandler: attemptLogin,
@@ -85460,7 +85473,7 @@ var Layout = function Layout(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_14__["default"], {
       user: props.state.auth.authenticated_user,
       dashboard_nav_open: props.state.ui.dashboard_nav_open,
-      addTopicInterest: addTopicInterest,
+      addTopicHandler: addTopicInterest,
       userTopics: props.state.userTopics,
       topics: props.state.topics,
       changeProfileImage: props.changeProfileImage,
@@ -85491,12 +85504,15 @@ var matchDispatchToProps = function matchDispatchToProps(dispatch, ownProps) {
     showNotifications: _actions__WEBPACK_IMPORTED_MODULE_11__["showNotifications"],
     closeNotifications: _actions__WEBPACK_IMPORTED_MODULE_11__["closeNotifications"],
     attemptSignup: function attemptSignup(data) {
-      return dispatch(data, ownProps);
+      return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_11__["attemptSignup"])(data, ownProps));
     },
+    // attemptSignup: data => dispatch(data, ownProps),
     attemptLogin: _actions__WEBPACK_IMPORTED_MODULE_11__["attemptLogin"],
     setAuthenticatedUser: _actions__WEBPACK_IMPORTED_MODULE_11__["setAuthenticatedUser"],
     hidePageLoader: _actions__WEBPACK_IMPORTED_MODULE_11__["hidePageLoader"],
-    attemptSignout: _actions__WEBPACK_IMPORTED_MODULE_11__["attemptSignout"],
+    attemptSignout: function attemptSignout() {
+      return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_11__["attemptSignout"])(ownProps));
+    },
     addTopicInterest: _actions__WEBPACK_IMPORTED_MODULE_11__["addTopicInterest"],
     changeProfileImage: _actions_profile_actions__WEBPACK_IMPORTED_MODULE_16__["changeProfileImage"],
     changeProfileName: _actions_profile_actions__WEBPACK_IMPORTED_MODULE_16__["changeProfileName"],
@@ -85632,6 +85648,37 @@ var Navigation = function Navigation(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navigation);
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectTopics.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/components/SelectTopics.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _dashboard_SelectUserTopics__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dashboard/SelectUserTopics */ "./resources/js/components/dashboard/SelectUserTopics.jsx");
+
+
+
+var SelectTopics = function SelectTopics(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: 'container p-4 bg-white mb-3'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    className: 'text-primary pl-2 bl-2 bl-primary mt-2 mb-3'
+  }, "Select Topics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_SelectUserTopics__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    topics: props.topics,
+    userTopics: props.userTopics,
+    addTopicHandler: props.addTopicHandler
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SelectTopics);
 
 /***/ }),
 
@@ -85957,6 +86004,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DashboardNavigation__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./DashboardNavigation */ "./resources/js/components/dashboard/DashboardNavigation.jsx");
 /* harmony import */ var _Interests__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Interests */ "./resources/js/components/dashboard/Interests.jsx");
 /* harmony import */ var _ProfileForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ProfileForm */ "./resources/js/components/dashboard/ProfileForm.jsx");
+/* harmony import */ var _SelectUserTopics__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./SelectUserTopics */ "./resources/js/components/dashboard/SelectUserTopics.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -85981,7 +86029,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Dashboard = function Dashboard(props) {
+  console.log("DASHBOARD PROPSS", props);
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
       searchTopics = _useState2[0],
@@ -86039,26 +86090,11 @@ var Dashboard = function Dashboard(props) {
       display: 'block'
     },
     className: "shadow text-primary bl-2 bl-primary"
-  }, "Pet interest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Interests__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    topics: props.userTopics
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: function onSubmit() {}
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_FormGroup__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_FormControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    placeholder: 'Type to search pet interest',
-    handler: handleTopicFieldChange,
-    classes: 'shadow'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_SelectableList__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    items: searchTopics,
-    field: 'topic',
-    clickHandler: props.addTopicInterest
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    style: {
-      color: 'rgba(100,100,100,.6)',
-      textAlign: 'center',
-      fontSize: '.8em',
-      marginTop: '.5em'
-    }
-  }, "Enter * for all topics")))))));
+  }, "Pet interest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SelectUserTopics__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    topics: props.topics,
+    userTopics: props.userTopics,
+    addTopicHandler: props.addTopicHandler
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Dashboard);
@@ -86351,6 +86387,89 @@ var ProfileForm = function ProfileForm(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProfileForm);
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/SelectUserTopics.jsx":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/dashboard/SelectUserTopics.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_Auxil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/Auxil */ "./resources/js/components/util/Auxil.jsx");
+/* harmony import */ var _util_FormControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/FormControl */ "./resources/js/components/util/FormControl.jsx");
+/* harmony import */ var _util_FormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/FormGroup */ "./resources/js/components/util/FormGroup.jsx");
+/* harmony import */ var _util_SelectableList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/SelectableList */ "./resources/js/components/util/SelectableList.jsx");
+/* harmony import */ var _Interests__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Interests */ "./resources/js/components/dashboard/Interests.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+var SelectUserTopic = function SelectUserTopic(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      searchTopics = _useState2[0],
+      setSearchTopics = _useState2[1];
+
+  var handleTopicFieldChange = function handleTopicFieldChange(val) {
+    console.log(val, searchTopics);
+
+    if (val.length) {
+      if (val == '*') {
+        return setSearchTopics(props.topics);
+      }
+
+      return setSearchTopics(props.topics.filter(function (topic) {
+        return topic.topic.toLowerCase().startsWith(val.toLowerCase());
+      }));
+    }
+
+    return setSearchTopics([]);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_Auxil__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Interests__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    topics: props.userTopics
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit() {}
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_FormGroup__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_FormControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    placeholder: 'Type to search pet interest',
+    handler: handleTopicFieldChange,
+    classes: 'shadow'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_SelectableList__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    items: searchTopics,
+    field: 'topic',
+    clickHandler: props.addTopicHandler
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: {
+      color: 'rgba(100,100,100,.6)',
+      textAlign: 'center',
+      fontSize: '.8em',
+      marginTop: '.5em'
+    }
+  }, "Enter * for all topics"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SelectUserTopic);
 
 /***/ }),
 

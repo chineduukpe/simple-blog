@@ -35,6 +35,7 @@ import Margin from './util/Margin';
 import { changeProfileImage, changeProfileName } from '../actions/profile_actions';
 import BlogList from './BlogList';
 import { Blogs } from './Blogs';
+import SelectTopics from './SelectTopics';
 
 const Layout = (props) => {
     //CHECK FOR LOGGED IN USER WHENEVER APP REFRESH
@@ -56,7 +57,14 @@ const Layout = (props) => {
     })
 
 
-    const {state, showNotifications, closeNotifications, attemptSignup, attemptLogin, addTopicInterest} = props;
+    const {
+        state,
+         showNotifications,
+          closeNotifications,
+           attemptSignup,
+            attemptLogin,
+             addTopicInterest
+            } = props;
 
     return (
             // props.state.loader.page_loader_open ? <PageLoader/> :
@@ -74,6 +82,13 @@ const Layout = (props) => {
                             <LandingPage 
                                 blogs={props.state.blogs}
                                 is_authenticated={props.state.auth.is_authenticated}
+                            />
+                        </Route>
+                        <Route exact path={'/select-topics'} >
+                            <SelectTopics 
+                                topics={props.state.topics}
+                                userTopics={props.state.userTopics}
+                                addTopicHandler={addTopicInterest}
                             />
                         </Route>
                         <Route path={'/login'}>
@@ -95,7 +110,7 @@ const Layout = (props) => {
                             <Dashboard
                             user={props.state.auth.authenticated_user}
                             dashboard_nav_open={props.state.ui.dashboard_nav_open}
-                            addTopicInterest={addTopicInterest}
+                            addTopicHandler={addTopicInterest}
                             userTopics={props.state.userTopics}
                             topics={props.state.topics}
                             changeProfileImage={props.changeProfileImage}
@@ -129,11 +144,12 @@ const matchDispatchToProps = (dispatch,ownProps) => {
     return bindActionCreators({
         showNotifications,
         closeNotifications,
-        attemptSignup: data => dispatch(data, ownProps),
+        attemptSignup: data => dispatch(attemptSignup(data, ownProps)),
+        // attemptSignup: data => dispatch(data, ownProps),
         attemptLogin,
         setAuthenticatedUser,
         hidePageLoader,
-        attemptSignout,
+        attemptSignout: () => dispatch(attemptSignout(ownProps)),
         addTopicInterest,
         changeProfileImage,
         changeProfileName,

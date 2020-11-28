@@ -94,7 +94,8 @@ const LandingPage = props => {
                     <div className="row">
                         <div className="col-md-6 mt-5" ref={sectionRef}>
                             <h1 ref={headerTextEffect} className={'text-white-50 stencil-font banner-header mt-3'}>Welcome to <span className="text-danger d-block">Pet Blog</span></h1>
-                            <p className="text-white bl-danger bl-2 pl-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi error harum illum in laudantium perspiciatis quo! Alias aliquam culpa ipsam laboriosam nisi numquam, omnis ullam. Dolorem excepturi laudantium molestiae praesentium!</p>
+                            <p className="text-white bl-danger bl-2 pl-3"> 
+                            Welcome to pet blog! It's great to have you here mate. Signup and get update on how to train your lovly pet. Already have an account? No hussle mate! Click the button below to <strong className=" text-danger"> Cheers!</strong> </p>
                             {!props.is_authenticated && <Link ref={buttonAnimation} to={'/login'} className={'btn btn-danger btn-lg ml-3 mt-3 '}> Sign in to see interests <i className="fa fa-arrow-right"></i></Link>}
                         </div>
                         <div className="col-md-6">

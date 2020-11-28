@@ -12,6 +12,7 @@ export const attemptSignup = (data, ownProps) => {
         try {
             const response = await pharmacareAPI.post('/register',data);
             dispatch(showNotifications(response.data.message,'success'))
+            dispatch(setAuthenticatedUser(response.data.user))
             ownProps.history.push('/select-topics');
 
         }catch (e) {
@@ -53,15 +54,15 @@ export const setAuthenticatedUser = user => {
     }
 }
 
-export const attemptSignout = () => {
+export const attemptSignout = ownProps => {
     return async dispatch => {
         dispatch(showLoader())
         try {
         const response = await pharmacareAPI.post('/logout');
+        ownProps.history.push('/');
         dispatch(showNotifications(response.data.message,'success'))
             localStorage.clear()
             dispatch(signoutSuccess())
-
         }catch (e) {
             dispatch(showNotifications(e.response.data.errors))
         }
