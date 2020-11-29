@@ -11,9 +11,7 @@ import Interests from './Interests'
 import ProfileForm from './ProfileForm'
 import SelectUserTopic from './SelectUserTopics'
 
-const Dashboard = props => {
-    const [searchTopics,setSearchTopics] = useState([])
-    
+const Dashboard = props => {    
     return (
         <div className={'dashboard-container'}>
             <button className="mobile-menu-toggle btn btn-sm shadow" onClick={() => props.toggleDashboardNav()}>menu </button>

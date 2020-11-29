@@ -10,7 +10,7 @@ export const addTopicInterest = (topic_id) =>{
             const response = await pharmacareAPI.post('user/topics',{topic_id});
             const {messages, topics} = response.data
             dispatch(showNotifications(messages))
-            dispatch(userTopicsLoaded(topics))
+            // dispatch(userTopicsLoaded(topics))
             dispatch(loadBlogs())
         } catch (e) {
             dispatch(showNotifications(objectToSingleArray(e.response.data.errors),'warning'))
@@ -23,7 +23,6 @@ export const addTopicInterestSuccess = (topics,messages) => {
     return dispatch => {
         dispatch(showNotifications(messages))
         dispatch(userTopicsLoaded(topics))
-
     }
 }
 
