@@ -36,7 +36,6 @@ export const attemptLogin = data => {
             dispatch(setAuthenticatedUser({user, access_token}))
             dispatch(userTopicsLoaded(user.user.topics))
         }catch (e) {
-            console.log(e)
             dispatch(showNotifications(objectToSingleArray(e.response.data.errors),'error'));
         }
         finally {

@@ -7,7 +7,7 @@ import Interests from './dashboard/Interests'
 const BlogDetail = props => {
     const {id} = useParams()
     const blog = props.blogs.filter(blog => blog.id == id)[0]
-    console.log(blog)
+    
     return (
         <div className="container-md">
             <div className="row blog-detail-wrapper">

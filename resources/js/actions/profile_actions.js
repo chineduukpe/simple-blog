@@ -15,7 +15,6 @@ export const changeProfileImage = image => {
             const $user = {user: response.data.user,access_token}
             dispatch(setAuthenticatedUser($user))
         } catch (e) {
-            console.log(e.response)
             dispatch(showNotifications(objectToSingleArray(e.response.data.errors)))
         }
     }

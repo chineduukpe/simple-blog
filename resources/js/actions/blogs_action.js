@@ -9,7 +9,6 @@ export const loadBlogs = () => {
             const response = await pharmacareAPI.get('blogs');
             dispatch(loadBlogsSuccess(response.data.data))
         } catch (e) {
-            console.log(e.response)
             dispatch(showNotifications(objectToSingleArray(e.response.data.errors)))
         }
     }

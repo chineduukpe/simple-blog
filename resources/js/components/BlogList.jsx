@@ -11,7 +11,7 @@ const BlogList = props => {
     console.log(props.blogs)
     useEffect(() => {
         if (isLoading) {
-            props.loadBlogs()
+            // props.loadBlogs()
             setIsLoading(false)
         }
     })

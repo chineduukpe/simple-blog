@@ -5,7 +5,7 @@ const initial_state = {
 }
 
 const uiReducer = (state = initial_state, action) => {
-    console.log(state)
+
     switch (action.type) {
         case TOGGLE_DASHBOARD_NAV:
             return {

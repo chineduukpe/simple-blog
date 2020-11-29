@@ -8,7 +8,6 @@ export const loadTopics = () => {
             const response = await pharmacareAPI.get('/topics');
             dispatch(loadTopicsSuccess(response.data.data))
         } catch (e) {
-            console.log(e)
             dispatch(showNotifications(['Could not load fresh topics'],'error'))
         }
     }
@@ -16,7 +15,6 @@ export const loadTopics = () => {
 
 
 export const loadTopicsSuccess = topics => {
-    console.log("SUCCESS TOPICS ", topics)
     return {
         type: LOAD_TOPICS_SUCCESS,
         topics
