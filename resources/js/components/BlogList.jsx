@@ -9,9 +9,9 @@ import Spinner from './util/Spinner'
 const BlogList = props => {
     const [isLoading, setIsLoading] = useState(true)
     console.log(props.blogs)
-    useEffect(() => async () => {
+    useEffect(() => {
         if (isLoading) {
-            await props.loadBlogs()
+            props.loadBlogs()
             setIsLoading(false)
         }
     })

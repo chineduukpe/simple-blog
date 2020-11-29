@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SelectUserTopic from './dashboard/SelectUserTopics'
 
 const SelectTopics = props => {
@@ -9,6 +10,7 @@ const SelectTopics = props => {
             userTopics={props.userTopics}
             addTopicHandler={props.addTopicHandler}
         />
+        <Link to="/dashboard" className='btn btn-success shadow-lg'>{'Continue >>>'} </Link>
     </div>
 }
 

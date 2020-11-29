@@ -12,23 +12,8 @@ import ProfileForm from './ProfileForm'
 import SelectUserTopic from './SelectUserTopics'
 
 const Dashboard = props => {
-    console.log("DASHBOARD PROPSS",props)
     const [searchTopics,setSearchTopics] = useState([])
     
-    const handleTopicFieldChange = val => {
-        console.log(val,searchTopics)
-        if (val.length) {
-            
-            if (val == '*') {
-                return setSearchTopics(props.topics)
-            }
-            return setSearchTopics(props.topics.filter(function(topic){
-                return topic.topic.toLowerCase().startsWith(val.toLowerCase())
-            }))
-        }
-        return setSearchTopics([]);
-    }
-
     return (
         <div className={'dashboard-container'}>
             <button className="mobile-menu-toggle btn btn-sm shadow" onClick={() => props.toggleDashboardNav()}>menu </button>

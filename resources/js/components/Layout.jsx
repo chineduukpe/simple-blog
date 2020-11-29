@@ -127,7 +127,7 @@ const Layout = (props) => {
                             toggleDashboardNav={props.toggleDashboardNav}
                             />
                         </ProtectedRoute>
-                        <ProtectedRoute is_authenticated={auth.is_authenticated} to='/blogs' render={() => {
+                        <ProtectedRoute is_authenticated={auth.is_authenticated} to='/blogs' component={() => {
                             return <Blogs blogs={blogs} />
                         }}>
                             

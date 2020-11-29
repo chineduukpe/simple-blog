@@ -3,6 +3,7 @@ import Auxil from './Auxil';
 
 
 const ProfileImageSection = props => {
+    console.log("profile image",props.user)
     const propStyles = props.style ? {...props.style} : {}
     return (
         <Auxil>

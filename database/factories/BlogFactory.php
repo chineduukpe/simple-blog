@@ -27,6 +27,7 @@ class BlogFactory extends Factory
             'body' => $this->faker->text,
             'user_id' => $this->faker->randomDigitNotNull,
             'topic_id' => $this->faker->randomDigitNotNull,
+            'blog_image_url' => 'http://localhost:8000/assets/img/bg/bg' . rand(1,8) . '.jpg'
         ];
     }
 }
