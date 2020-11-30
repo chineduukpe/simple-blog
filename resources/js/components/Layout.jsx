@@ -37,6 +37,7 @@ import BlogList from './BlogList';
 import { Blogs } from './Blogs';
 import SelectTopics from './SelectTopics';
 import ProtectedRoute from './util/ProtectedRoute';
+import Posts from './dashboard/admin/Posts';
 
 const Layout = (props) => {
     //CHECK FOR LOGGED IN USER WHENEVER APP REFRESH
@@ -113,6 +114,10 @@ const Layout = (props) => {
                             signupHandler={attemptSignup}
                             is_loading = {loader.is_open}
                             />
+                        </Route>
+
+                        <Route to='/admin/posts'>
+                            <Posts/>
                         </Route>
                         
                         <ProtectedRoute is_authenticated={auth.is_authenticated} path={'/dashboard'}>

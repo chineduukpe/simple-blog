@@ -91,12 +91,12 @@ const LandingPage = props => {
                 </div>
 
                 <section>
-                    <div className="row">
+                    <div className="row banner">
                         <div className="col-md-6 mt-5" ref={sectionRef}>
                             <h1 ref={headerTextEffect} className={'text-white-50 stencil-font banner-header mt-3'}>Welcome to <span className="text-danger d-block">Pet Blog</span></h1>
                             <p className="text-white bl-danger bl-2 pl-3"> 
                             Welcome to pet blog! It's great to have you here mate. Signup and get update on how to train your lovly pet. Already have an account? No hussle mate! Click the button below to <strong className=" text-danger"> Cheers!</strong> </p>
-                            {!props.is_authenticated && <Link ref={buttonAnimation} to={'/login'} className={'btn btn-danger btn-lg ml-3 mt-3 '}> Sign in to see interests <i className="fa fa-arrow-right"></i></Link>}
+                            {!props.is_authenticated && <Link ref={buttonAnimation} to={'/login'} className={'btn btn-danger btn-lg ml-3 mt-3 zi-m-1000'}> Sign in to see interests <i className="fa fa-arrow-right"></i></Link>}
                         </div>
                         <div className="col-md-6">
                             <img ref={doctor} className={'img img-fluid banner-img'} src="http://localhost:8000/assets/img/doc1.png" alt="Doctor Image"/>

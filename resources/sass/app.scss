@@ -517,6 +517,15 @@ footer{
         }
     }
 }
+
+.banner{
+    .zi-m-1000{
+        z-index: 9999 !important;
+    }
+    img{
+        z-index: 0 !important;
+    }
+}
 .dashboard-card-number{
     font-size: 4em;
     font-weight: 600;
@@ -592,6 +601,15 @@ footer{
     
 }
 
+.bg-transparent{
+    background: rgba($color: #000000, $alpha: .20);
+    
+    h4{
+        z-index: 100;
+    }
+} 
+
+
 
 .tags{
     font-size: .83em;
@@ -628,6 +646,11 @@ input.form-control{
     .mobile-menu-toggle{
         display: none;
     }
+   .banner{
+       img{
+           z-index: 0 !important;
+       }
+   }
     .dashboard-container{
         .dashboard-navigation{
             display: block;

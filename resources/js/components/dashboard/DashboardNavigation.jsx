@@ -17,7 +17,7 @@ const DashboardNavigation = props =>{
                 <li> <Link to='/dashboard/changepassword'><i className="fa fa-lock"></i> Change Password</Link></li>
                 <hr/>
                 <h6 className="text-primary"><i className="fa fa-chart-bar"></i> Admin</h6>
-                <li><Link to='/dashboard/posts'>Users</Link></li>
+                <li><Link to='/admin/posts'>Users</Link></li>
             </ul>
             <div className="dashboard-nav-footer">
                 <i className="fa fa-sign-out"></i>
