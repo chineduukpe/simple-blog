@@ -116,9 +116,9 @@ const Layout = (props) => {
                             />
                         </Route>
 
-                        <Route to='/admin/posts'>
+                        {/* <Route to='/admin/posts'>
                             <Posts/>
-                        </Route>
+                        </Route> */}
                         
                         <ProtectedRoute is_authenticated={auth.is_authenticated} path={'/dashboard'}>
                             <Dashboard
