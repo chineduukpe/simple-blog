@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->text('profile_image_url')->default('http://localhost:8000/assets/img/profile/default.jpg');
+            $table->string('profile_image_url')->default('http://ec2-18-188-12-71.us-east-2.compute.amazonaws.com/assets/img/profile/default.jpg');
             $table->string('role')->default('user');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
