@@ -99,7 +99,7 @@ const LandingPage = props => {
                             {!props.is_authenticated && <Link ref={buttonAnimation} to={'/login'} className={'btn btn-danger btn-lg ml-3 mt-3 zi-m-1000'}> Sign in to see interests <i className="fa fa-arrow-right"></i></Link>}
                         </div>
                         <div className="col-md-6">
-                            <img ref={doctor} className={'img img-fluid banner-img'} src="http://localhost:8000/assets/img/doc1.png" alt="Doctor Image"/>
+                            <img ref={doctor} className={'img img-fluid banner-img'} src="http://ec2-18-220-223-194.us-east-2.compute.amazonaws.com/assets/img/doc1.png" alt="Doctor Image"/>
                         </div>
 
                     </div>
