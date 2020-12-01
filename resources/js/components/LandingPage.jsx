@@ -41,31 +41,7 @@ const LandingPage = props => {
         if (!hasLoaded){
             setHasLoaded(true)
             const tl = new TimelineMax();
-            tl.staggerFrom(sectionRef.current,1,{
-                opacity: 0.5,
-                duration: 1,
-                scale: 0,
-                delay:.2,
-                ease: Power2.easeInOut
-            })
-            .from(xAnimation.current,1,{
-                opacity: 0.5,
-                duration: 1,
-                x: 500,
-                ease: Power2.easeOut
-            },1,"-=2")
-            .from(buttonAnimation.current,{
-                scaleX: 0,
-                transformOrigin: 'left',
-                left: -50,
-            },1, '-=5')
-            .to(doctor.current, {
-                y: 20,
-                repeat: -1,
-                ease: Back.easeIn.config(3),
-                duration: 4,
-                yoyo: true,
-            })
+            
 
 
         }
