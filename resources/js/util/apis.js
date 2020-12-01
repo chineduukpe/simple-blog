@@ -3,7 +3,7 @@ import {objectToSingleArray} from "./helpers";
 
 export const pharmacareAPI = axios.create({
     // baseURL: 'http://localhost:8000/api/v1',
-    baseURL: 'http://ec2-18-188-12-71.us-east-2.compute.amazonaws.com/api/v1',
+    baseURL: 'http://localhost:8000/api/v1',
     responseType: "json",
 });
 
